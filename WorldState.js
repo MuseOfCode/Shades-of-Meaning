@@ -11,44 +11,37 @@ class WorldState {
         this.element = config.element; // Container element for the game
         this.canvas = this.element.querySelector(".gameCanvas"); // Find the <canvas>
         this.worldCtx = this.canvas.getContext("2d"); // Get the 2D rendering context
+
+        this.currentMap = null
     }
 
+
 /**
- * Method to load and draw the game map
- * @param {function}
+ * Starts and runs the game loop, drawing the base image, entities and top image.
+ * Continuously animates the game.
  */
-    initCanvas() {
-        const mapImg = new Image(); //Creates a new image element <img> 
-        mapImg.onload = () => {
-            this.worldCtx.drawImage(mapImg, 0, 0); 
-        };
-        
-        mapImg.onerror = (err) => {
-            console.log("idk man", err);
-        };
-
-        mapImg.src = "./assets/images/maps/base/bedroom.png"; // Set source here
-
-        // Ensure Entity is defined somewhere
-        if (typeof Entity !== "undefined") {
-            const humanAvatar = new Entity({
-                x: 5,
-                y: 5,
+    runGameLoop() {
+        const step = () => {
+            if (this.currentMap) { 
+                this.currentMap.drawBaseImg(this.worldCtx) // Draw base layer
+    
+                Object.values(this.currentMap.entities).forEach((obj) => {
+                    obj.sprite.draw(this.worldCtx)}) // Draw each entitys sprite
+    
+                // this.currentMap.drawTopImg(this.worldCtx) 
+            }
+            
+            requestAnimationFrame(() => {
+                step() // Continue game loop
             })
-
-            const canineAvatar = new Entity({
-                x: 6,
-                y: 5,
-                src: "./assets/images/sprites/characters/canine.png"
-            })
-
-            setTimeout(() => {
-                    humanAvatar.sprite.draw(this.worldCtx);
-                    canineAvatar.sprite.draw(this.worldCtx);
-
-            }, 200);
-        } else {
-            console.error("Entity is not defined");
         }
+    
+        step() // Start game loop
+    }
+    
+    initCanvas() {
+        this.currentMap = new WorldMap(window.WorldMaps.Bedroom)
+        this.currentMap.entities = window.WorldMaps.Bedroom.entities
+        this.runGameLoop()
     }
 }

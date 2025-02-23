@@ -4,31 +4,31 @@ class WorldMap {
 
         //base layer of map
         this.baseImg = new Image()
-        this.baseImg.src = config.baseImg
+        this.baseImg.src = config.baseSrc
 
         //top layer of map
-        this.topImg.src = new Image()
-        this.topImg.src = config.topImg
+        this.topImg = new Image()
+        this.topImg.src = config.topSrc
     }
 
-    drawBase(ctx){
+    drawBaseImg(ctx){
         ctx.drawImage(this.baseImg, 0, 0)
     }
 
-    drawTop(ctx){
-        ctx.drawImage(this.baseImg, 0, 0)
+    drawTopImg(ctx){
+        ctx.drawImage(this.topImg, 0, 0)
     }
 }
 
 //object container all the maps, can be used across all files 
-window.theWorldMaps = {
-    BedRoom: {
+window.WorldMaps = {
+    Bedroom: {
         baseSrc : "./assets/images/maps/base/bedroom.png",
         topSrc : "./assets/images/maps/top/bedroom.png",
         entities : {
             humanAvatar : new Entity({
                 x : 5,
-                y : 5
+                y : 5,
             }),
             dogAvatar : new Entity({
                 x : 5,
