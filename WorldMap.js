@@ -30,9 +30,42 @@ window.WorldMaps = {
                 x : 5,
                 y : 5,
             }),
-            dogAvatar : new Entity({
+            canineAvatar : new Entity({
                 x : 5,
                 y : 6,
+                src : "./assets/images/sprites/characters/canine.png"
+            })
+        }
+
+    },
+
+    Lobby : {
+        baseSrc : "./assets/images/maps/base/lobby.png",
+        topSrc : "./assets/images/maps/top/lobby.png",
+        entities : {
+            humanAvatar : new Entity({
+                x: 3,
+                y: 5
+            }),
+            canineAvatar : new Entity({
+                x: 4,
+                y: 5,
+                src : "./assets/images/sprites/characters/canine.png"
+            })
+        }
+
+    },
+
+    Village : {
+        baseSrc : "./assets/images/maps/base/village.png",
+        entities : {
+            humanAvatar : new Entity({
+                x: 7,
+                y: 5
+            }),
+            canineAvatar : new Entity({
+                x: 6,
+                y: 5,
                 src : "./assets/images/sprites/characters/canine.png"
             })
         }
