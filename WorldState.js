@@ -21,13 +21,16 @@ class WorldState {
  * Continuously animates the game.
  */
     runGameLoop() {
+        console.log(utils.gridify(2))
         const step = () => {
             if (this.currentMap) { 
                 this.worldCtx.clearRect(0,0, this.canvas.width, this.canvas.height) //clears canvas before next frame
                 this.currentMap.drawBaseImg(this.worldCtx) // Draw base layer
     
                 Object.values(this.currentMap.entities).forEach((obj) => {
-                    obj.x += 0.2;
+                    obj.update({
+                       arrow: this.directionInput.direction
+                    });
                     obj.sprite.draw(this.worldCtx)}) // Draw each entitys sprite
     
                 // this.currentMap.drawTopImg(this.worldCtx) 
@@ -44,6 +47,9 @@ class WorldState {
     initCanvas() {
         this.currentMap = new WorldMap(window.WorldMaps.Village)
         this.currentMap.entities = window.WorldMaps.Village.entities
+        this.directionInput = new DirectionInput()
+        this.directionInput.move();
+        this.directionInput.direction
         this.runGameLoop()
     }
 }

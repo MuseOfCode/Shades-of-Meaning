@@ -26,11 +26,11 @@ window.WorldMaps = {
         baseSrc : "./assets/images/maps/base/bedroom.png",
         topSrc : "./assets/images/maps/top/bedroom.png",
         entities : {
-            humanAvatar : new Entity({
+            humanAvatar : new Actor({
                 x : 5,
                 y : 5,
             }),
-            canineAvatar : new Entity({
+            canineAvatar : new Actor({
                 x : 5,
                 y : 6,
                 src : "./assets/images/sprites/characters/canine.png"
@@ -43,13 +43,13 @@ window.WorldMaps = {
         baseSrc : "./assets/images/maps/base/lobby.png",
         topSrc : "./assets/images/maps/top/lobby.png",
         entities : {
-            humanAvatar : new Entity({
-                x: 3,
-                y: 5
+            humanAvatar : new Actor({
+                x: utils.gridify(3),
+                y: utils.gridify(5),
             }),
-            canineAvatar : new Entity({
-                x: 4,
-                y: 5,
+            canineAvatar : new Actor({
+                x: utils.gridify(4),
+                y: utils.gridify(5),
                 src : "./assets/images/sprites/characters/canine.png"
             })
         }
@@ -59,13 +59,13 @@ window.WorldMaps = {
     Village : {
         baseSrc : "./assets/images/maps/base/village.png",
         entities : {
-            humanAvatar : new Entity({
-                x: 7,
-                y: 5
+            humanAvatar : new Actor({
+                x: utils.gridify(7),
+                y: utils.gridify(5),
             }),
-            canineAvatar : new Entity({
-                x: 6,
-                y: 5,
+            canineAvatar : new Actor({
+                x: utils.gridify(6),
+                y: utils.gridify(5),
                 src : "./assets/images/sprites/characters/canine.png"
             })
         }

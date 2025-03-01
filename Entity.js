@@ -7,7 +7,7 @@ class Entity {
         this.x = config.x || 0 //sets x, defualts to 0 if undefined
         this.y = config.y || 0 //sets y, defualts to 0 if undefined
         console.log("Creating Entity with x:", this.x, "y:", this.y);
-
+        this.direction = config.direction || "down"; //multiple types of entities will need direction
 
         // creates new instance of Sprite for the new instance of Entity 
         this.sprite = new Sprite({

@@ -35,7 +35,7 @@ class Sprite {
     draw(ctx) {
         if (!this.isLoaded) return;  // Prevent drawing if image isn't loaded
 
-        const [x, y] = [this.entity.x * 16, this.entity.y * 16] // coverts grid coordinates to the pixel values
+        const [x, y] = [this.entity.x, this.entity.y] // coverts grid coordinates to the pixel values
 
         //Actually draws the sprite on the canvas
         ctx.drawImage(
