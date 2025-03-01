@@ -60,6 +60,7 @@ window.WorldMaps = {
         baseSrc : "./assets/images/maps/base/village.png",
         entities : {
             humanAvatar : new Actor({
+                // isPlayerControlled : true,
                 x: utils.gridify(7),
                 y: utils.gridify(5),
             }),

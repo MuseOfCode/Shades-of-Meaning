@@ -1,7 +1,6 @@
 class DirectionInput {
-    constructor() {
+    constructor(actor) {
         this.heldDirections = []
-
         this.arrowMap = {
             "ArrowUp": "up",
             "ArrowDown" : "down",
@@ -31,6 +30,8 @@ class DirectionInput {
                 this.heldDirections.unshift(dir)
                 console.log(this.heldDirections)
             }
+
+            
         })
         document.addEventListener("keyup", e => {
             const dir = this.arrowMap[e.code]
@@ -42,7 +43,6 @@ class DirectionInput {
                 console.log(this.heldDirections)
             }
 
-            
         })
     }
 

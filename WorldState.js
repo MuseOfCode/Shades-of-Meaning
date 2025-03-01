@@ -15,6 +15,16 @@ class WorldState {
         this.currentMap = null
     }
 
+    //switches the controlls by first ensuring both actors exist on map 
+    togglePlayer() {
+        if (!this.currentMap) return;
+        const { humanAvatar, canineAvatar } = this.currentMap.entities;
+        if (humanAvatar && canineAvatar) {
+            this.activePlayer.isPlayerControlled = false; //disables on current and enables on the other
+            this.activePlayer = this.activePlayer === humanAvatar ? canineAvatar : humanAvatar;
+            this.activePlayer.isPlayerControlled = true;
+        }
+    }
 
 /**
  * Starts and runs the game loop, drawing the base image, entities and top image.
@@ -48,6 +58,18 @@ class WorldState {
         this.currentMap = new WorldMap(window.WorldMaps.Village)
         this.currentMap.entities = window.WorldMaps.Village.entities
         this.directionInput = new DirectionInput()
+
+      // this allows player to toggle between actors
+      this.activePlayer = this.currentMap.entities.humanAvatar;
+      this.activePlayer.isPlayerControlled = true;
+
+      document.addEventListener("keydown", (e) => {
+          if (e.code === "KeyT") {
+              this.togglePlayer();
+          }
+      });
+  
+    
         this.directionInput.move();
         this.directionInput.direction
         this.runGameLoop()

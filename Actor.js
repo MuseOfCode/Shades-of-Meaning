@@ -2,6 +2,7 @@ class Actor extends Entity {
     constructor(config) {
         super(config) //config for instance of entity
         this.movementRemaining = 0;
+        this.isPlayerControlled = config.isPlayerControlled || false;
 
 
         this.directionUpdate = {
@@ -16,7 +17,7 @@ class Actor extends Entity {
     update(state){
         this.updatePosition()
 
-        if(this.movementRemaining === 0 && state.arrow){
+        if(this.isPlayerControlled && this.movementRemaining === 0 && state.arrow){
             this.direction = state.arrow;
             this.movementRemaining = 16;
         }
