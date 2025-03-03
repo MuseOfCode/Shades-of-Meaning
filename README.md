@@ -8,6 +8,7 @@ Shades of Meaning is a 2D top-down RPG built with vanilla JavaScript, HTML5 Canv
 
 *I have attached a brief gameplay clip to provide an overview of the game's visual style and overall feel. Please note that while the dialogue, scenes, and other elements shown are subject to change, the art style and atmosphere will remain consistent.*
 
+[Screen recording 2025-03-03 21.25.03.webm](https://github.com/user-attachments/assets/f7a39533-531e-42c1-970c-bf79096760b0)
 
 ### Current Features
 * Canvas-Based Rendering – Uses HTML5 Canvas to render characters, environments and animations.
@@ -22,7 +23,7 @@ Shades of Meaning is a 2D top-down RPG built with vanilla JavaScript, HTML5 Canv
     
    ```bash
    git clone https://github.com/yourusername/shades-of-meaning.git
-   cd shades-of-meaning[Screen recording 2025-03-03 21.25.03.webm](https://github.com/user-attachments/assets/f7a39533-531e-42c1-970c-bf79096760b0)
+   cd shades-of-meaning
 
 3. Open the index.html file in your browser.
 
