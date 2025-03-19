@@ -14,12 +14,9 @@ class Actor extends Entity {
 
   update(state, activePlayer) {
     this.updatePosition();
+    this.updateSprite(state);
 
-    if (
-      this.isPlayerControlled &&
-      this.movementRemaining === 0 &&
-      state.arrow
-    ) {
+    if (this.isPlayerControlled && this.movementRemaining === 0 && state.arrow) {
       this.direction = state.arrow;
       this.movementRemaining = 16;
     } else if (!this.isPlayerControlled) {
@@ -53,11 +50,8 @@ class Actor extends Entity {
       if (!newDirection) return;
 
       // Predict next position
-      let nextX =
-        this.x +
-        (newDirection === "right" ? 1 : newDirection === "left" ? -1 : 0);
-      let nextY =
-        this.y + (newDirection === "down" ? 1 : newDirection === "up" ? -1 : 0);
+      let nextX = this.x + (newDirection === "right" ? 1 : newDirection === "left" ? -1 : 0);
+      let nextY = this.y + (newDirection === "down" ? 1 : newDirection === "up" ? -1 : 0);
 
       // Prevent stepping directly onto the player's tile
       if (nextX === target.x && nextY === target.y) return;
@@ -72,6 +66,17 @@ class Actor extends Entity {
       const [axis, delta] = this.directionUpdate[this.direction];
       this[axis] += delta;
       this.movementRemaining -= 1;
+    }
+
+    if (this.movementRemaining > 0) {
+      this.sprite.setAnimation("walk-" + this.direction);
+    }
+  }
+
+  updateSprite(state) {
+    if (this.isPlayerControlled && this.movementRemaining === 0 && !state.arrow) {
+      this.sprite.setAnimation("idle-" + this.direction);
+      return;
     }
   }
 }
